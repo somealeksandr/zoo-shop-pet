@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/ping', function () {
+    return json_encode([
+        'title' => 'Ping api',
+        'description' => 'Ping api description',
+        'version' => 1.0,
+    ]);
+});
