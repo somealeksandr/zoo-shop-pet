@@ -6,4 +6,5 @@ use App\DTO\BaseDTO;
 
 final class ResponseFromSignUpHandlerDTO extends BaseDTO
 {
+    protected int $code;
 }
