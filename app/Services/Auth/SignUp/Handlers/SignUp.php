@@ -28,7 +28,8 @@ final class SignUp implements CaseHandler
             $this->createNewUser();
         }
 
-        Mail::to($this->user->email)->send(new CreateNewUserMail($this->user->confirmation_code));
+        // todo uncomment after setup mail sender
+//        Mail::to($this->user->email)->send(new CreateNewUserMail($this->user->confirmation_code));
         $code = $this->user->confirmation_code;
 
         return ResponseFromSignUpHandlerDTO::fromArray(compact('code'));
