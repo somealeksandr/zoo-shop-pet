@@ -35,9 +35,9 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('sign-up', [SignUpController::class, 'signUp']);
     Route::post('sign-up/verify', [SignUpController::class, 'verifyUser']);
     Route::post('sign-up/verify/resend', [SignUpController::class, 'resendVerifyMail']);
-    Route::post('reset-password', [ResetPasswordController::class, 'resetPassword'])->name('user.reset-password');
-    Route::post('reset-password/verify', [ResetPasswordController::class, 'verifyResetPasswordCode'])->name('user.reset-password-verify-code');
-    Route::post('reset-password/confirm', [ResetPasswordController::class, 'resetPasswordConfirm'])->name('user.reset-password-confirm');
+    // Route::post('reset-password', [ResetPasswordController::class, 'resetPassword'])->name('user.reset-password');
+    // Route::post('reset-password/verify', [ResetPasswordController::class, 'verifyResetPasswordCode'])->name('user.reset-password-verify-code');
+    // Route::post('reset-password/confirm', [ResetPasswordController::class, 'resetPasswordConfirm'])->name('user.reset-password-confirm');
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth.jwt'], function () {
