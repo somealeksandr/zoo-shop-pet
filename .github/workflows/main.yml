@@ -2,7 +2,7 @@ name: CI-CD-Pipeline-to-AWS-ElasticBeastalk
 env:
   EB_PACKAGE_S3_BUCKET_NAME : "zoo-shop-application-packages"
   EB_APPLICATION_NAME       : "ZooShop"
-  EB_ENVIRONTMENT_NAME      : "ZooShop-env-1"
+  EB_ENVIRONTMENT_NAME      : "ZooShop-env"
   DEPLOY_PACKAGE_NAME       : "laravel_app_${{ github.sha }}.zip"
   AWS_REGION_NAME           : "eu-central-1"
 
