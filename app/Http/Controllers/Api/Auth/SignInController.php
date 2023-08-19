@@ -6,6 +6,7 @@ use App\Http\Controllers\AbstractApiController;
 use App\Http\Requests\Api\Auth\SignInRequest;
 use App\Services\Auth\SignIn\SignInService;
 use Illuminate\Http\JsonResponse;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 /**
  * Class SignInController
@@ -26,5 +27,11 @@ class SignInController extends AbstractApiController
         $responseFromSignInHandler = $this->service->signIn($credentials['email'], $credentials['password']);
 
         return $this->success($responseFromSignInHandler, 'User successfully authenticated.');
+    }
+
+    public function signOut(): JsonResponse
+    {
+        JWTAuth::invalidate(JWTAuth::getToken());
+        return $this->success([], 'You have successfully logged out.');
     }
 }
