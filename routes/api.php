@@ -31,6 +31,7 @@ Route::get('/ping', function () {
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('sign-in', [SignInController::class, 'signIn']);
+    Route::post('sign-out', [SignInController::class, 'signOut']);
     Route::post('sign-in/two-factor/complete', [SignInController::class, 'completeTwoFactor']);
     Route::post('sign-up', [SignUpController::class, 'signUp']);
     Route::post('sign-up/verify', [SignUpController::class, 'verifyUser']);
