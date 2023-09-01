@@ -33,6 +33,7 @@ class SignUpRequest extends AbstractApiRequest
                 'string',
                 'min:10',
                 'max:13',
+                Rule::unique('users', 'phone_number'),
                 'regex:/^([0-9\s\-\+\(\)]*)$/',
             ],
             'password' => [
