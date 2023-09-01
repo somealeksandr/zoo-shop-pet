@@ -21,7 +21,7 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Deploy to production
-      uses: appleboy/ssh-action@master
+      uses: easingthemes/ssh-deploy@main
       with:
         username: u791011727
         host: 45.84.207.193
