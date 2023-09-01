@@ -20,6 +20,11 @@ jobs:
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
-    - name: Run Migrations
-      run: php artisan migrate --force
+    - name: Deploy to production
+      uses: appleboy/ssh-action@master
+      with:
+        username: u791011727
+        host: 45.84.207.193
+        password: ${{ secrets.SSH_PASSWORD }}
+        script: 'cd /public_html && ./server_deploy.sh'
       
