@@ -25,6 +25,7 @@ jobs:
       with:
         username: u791011727
         host: 45.84.207.193
+        port: 65002
         password: ${{ secrets.SSH_PASSWORD }}
         script: 'cd /public_html && ./server_deploy.sh'
       
