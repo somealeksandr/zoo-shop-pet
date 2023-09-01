@@ -17,14 +17,16 @@ jobs:
         php-version: '8.1'
     - uses: actions/checkout@v3
     - name: Deploy to production
-      uses: easingthemes/ssh-deploy@main
+      uses: kostya-ten/ssh-server-deploy@v4
       with:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PASSWORD }}
-        ARGS: "-rlgoDzvc -i --delete"
-        SOURCE: "dist/"
-        REMOTE_HOST: 45.84.207.193
-        REMOTE_USER: u791011727
-        REMOTE_PORT: 65002
-        TARGET: ${{ secrets.REMOTE_TARGET }}
-        EXCLUDE: 'cd /public_html && ./server_deploy.sh'
+        host: 45.84.207.193
+        port: 65002
+        username: u791011727
+        password: ${{ secrets.SSH_PASSWORD }}
+        scp_source: 'cd /public_html && ./server_deploy.sh'
+        scp_target: ~/public_html
+        before_script: |
+          df -h
+        after_script: |
+          whoami
       
