@@ -17,16 +17,11 @@ jobs:
         php-version: '8.1'
     - uses: actions/checkout@v3
     - name: Deploy to production
-      uses: kostya-ten/ssh-server-deploy@v4
+      uses: appleboy/ssh-action@v1.0.0
       with:
-        host: 45.84.207.193
-        port: 65002
-        username: u791011727
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASSWORD }}
-        scp_source: 'cd /public_html && ./server_deploy.sh'
-        scp_target: ~/public_html
-        before_script: |
-          df -h
-        after_script: |
-          whoami
+        port: ${{ secrets.SSH_PORT }}
+        script: 'cd /public_html && ./server_deploy.sh'
       
