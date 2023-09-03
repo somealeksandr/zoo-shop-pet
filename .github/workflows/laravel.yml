@@ -37,9 +37,10 @@ jobs:
     - name: Execute migrations
       env:
         DB_CONNECTION: mysql
-        DB_DATABASE: u791011727_zoo_shop
+        DB_HOST: localhost
         DB_PORT: 3306
-        DB_USER: u791011727_zoo_shop_user
+        DB_DATABASE: u791011727_zoo_shop
+        DB_USERNAME: u791011727_zoo_shop_user
         DB_PASSWORD: 7HqfBV~%e(4R.(!
       run: |
         php artisan migrate --force
