@@ -36,8 +36,6 @@ jobs:
         chmod -R 777 storage bootstrap/cache
     - name: Boot Laravel application
       run: php artisan --version
-    - name: Restart MYSQL
-      run: sudo service mysql restart
     - name: Execute migrations
       env:
         DB_CONNECTION: mysql
