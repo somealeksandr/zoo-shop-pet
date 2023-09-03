@@ -29,5 +29,5 @@ jobs:
             whoami
           SCRIPT_AFTER: |
             ls -la
-            cd public_html/ && ./server_deploy.sh
+            cd public_html/ && chmod u+x server_deploy.sh && ./server_deploy.sh
       
