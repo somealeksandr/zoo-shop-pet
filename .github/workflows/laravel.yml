@@ -17,11 +17,10 @@ jobs:
         php-version: '8.1'
     - uses: actions/checkout@v3
     - name: Deploy to production
-      uses: appleboy/ssh-action@v1.0.0
+      uses: garygrossgarten/github-action-ssh@release
       with:
+        command: ls -a
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
-        password: ${{ secrets.SSH_PASSWORD }}
-        port: ${{ secrets.SSH_PORT }}
-        script: 'cd /public_html && ./server_deploy.sh'
+        privateKey: ${{ secrets.PRIVATE_SSH_KEY}}
       
