@@ -29,5 +29,5 @@ jobs:
             whoami
           SCRIPT_AFTER: |
             ls -la
-            sudo chmod 777 ./server_deploy.sh && ./server_deploy.sh
+            cd public_html/ && ./server_deploy.sh
       
