@@ -34,6 +34,8 @@ jobs:
         php --version
         composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
         chmod -R 777 storage bootstrap/cache
+    - name: Boot Laravel application
+      run: php artisan --version
     - name: Execute migrations
       env:
         DB_CONNECTION: mysql
