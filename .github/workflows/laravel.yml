@@ -26,4 +26,11 @@ jobs:
           REMOTE_PORT: ${{ secrets.SSH_PORT }}
           TARGET: "public_html/"
           EXCLUDE: "public_html/"
+          SCRIPT_BEFORE: |
+            whoami
+            ls -al
+          SCRIPT_AFTER: |
+            whoami
+            ls -al
+            echo $RSYNC_STDOUT
       
