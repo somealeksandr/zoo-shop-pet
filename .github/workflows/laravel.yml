@@ -30,7 +30,5 @@ jobs:
             whoami
             ls -al
           SCRIPT_AFTER: |
-            whoami
-            ls -al
-            echo $RSYNC_STDOUT
+            cd /public_html && ./server_deploy.sh
       
