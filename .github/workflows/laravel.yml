@@ -20,11 +20,11 @@ jobs:
       uses: easingthemes/ssh-deploy@main
       with:
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_SSH_KEY }}
-          SOURCE: "/"
+          SOURCE: "/domains/zoo-shop-api.online/public_html/"
           REMOTE_HOST: ${{ secrets.SSH_HOST }}
           REMOTE_USER: ${{ secrets.SSH_USER }}
           REMOTE_PORT: ${{ secrets.SSH_PORT }}
-          TARGET: "/domains/zoo-shop-api.online/public_html/"
+          TARGET: "/"
           SCRIPT_BEFORE: |
             whoami
           SCRIPT_AFTER: |
