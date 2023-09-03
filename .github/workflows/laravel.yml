@@ -29,6 +29,11 @@ jobs:
       with:
         php-version: '8.1'
     - uses: actions/checkout@v3
+    - name: Install dependencies
+      run: |
+        php --version
+        composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+        chmod -R 777 storage bootstrap/cache
     - name: Execute migrations
       env:
         DB_CONNECTION: mysql
