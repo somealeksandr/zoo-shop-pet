@@ -29,20 +29,13 @@ jobs:
       with:
         php-version: '8.1'
     - uses: actions/checkout@v3
-    - name: Verify MySQL connection
+    - name: Execute migrations
+      env:
+        DB_CONNECTION: mysql
+        DB_DATABASE: u791011727_zoo_shop
+        DB_PORT: 3306
+        DB_USER: u791011727_zoo_shop_user
+        DB_PASSWORD: 7HqfBV~%e(4R.(!
       run: |
-        mysql --host 45.84.207.193 --port ${{ job.services.mysql.ports['3306'] }} -uu791011727_zoo_shop_user -p'7HqfBV~%e(4R.(!' -e "SHOW DATABASES"
-    - name: Deploy to server
-      uses: easingthemes/ssh-deploy@main
-      with:
-          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_SSH_KEY }}
-          SOURCE: "/"
-          REMOTE_HOST: ${{ secrets.SSH_HOST }}
-          REMOTE_USER: ${{ secrets.SSH_USER }}
-          REMOTE_PORT: ${{ secrets.SSH_PORT }}
-          TARGET: "/public_html"
-          SCRIPT_BEFORE: |
-            whoami
-          SCRIPT_AFTER: |
-            chmod u+x server_deploy.sh && ./server_deploy.sh
+        php artisan migrate
       
