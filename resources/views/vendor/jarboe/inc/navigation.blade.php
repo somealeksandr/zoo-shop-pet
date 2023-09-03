@@ -26,6 +26,13 @@
                     <span class="menu-item-parent">Users</span>
                 </a>
             </li>
+
+            <li>
+                <a href="{{ admin_url('countries') }}">
+                    <i class="fa fa-lg fa-fw fa-user"></i>
+                    <span class="menu-item-parent">Countries</span>
+                </a>
+            </li>
         </ul>
     </nav>
 
