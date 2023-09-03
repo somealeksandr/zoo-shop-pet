@@ -20,12 +20,10 @@ jobs:
       uses: easingthemes/ssh-deploy@main
       with:
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_SSH_KEY }}
-          SOURCE: "public_html/"
+          SOURCE: "./public_html/"
           REMOTE_HOST: ${{ secrets.SSH_HOST }}
           REMOTE_USER: ${{ secrets.SSH_USER }}
           REMOTE_PORT: ${{ secrets.SSH_PORT }}
-          TARGET: "public_html/"
-          EXCLUDE: "public_html/"
           SCRIPT_BEFORE: |
             whoami
             ls -al
