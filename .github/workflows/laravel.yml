@@ -26,7 +26,6 @@ jobs:
           REMOTE_PORT: ${{ secrets.SSH_PORT }}
           SCRIPT_BEFORE: |
             whoami
-            ls -al
           SCRIPT_AFTER: |
-            cd /public_html && ./server_deploy.sh
+            ./server_deploy.sh
       
