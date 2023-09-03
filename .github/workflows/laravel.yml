@@ -42,5 +42,5 @@ jobs:
         DB_USER: u791011727_zoo_shop_user
         DB_PASSWORD: 7HqfBV~%e(4R.(!
       run: |
-        php artisan migrate
+        php artisan migrate --force
       
