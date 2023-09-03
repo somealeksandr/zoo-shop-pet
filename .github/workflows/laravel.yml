@@ -11,11 +11,27 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_USER: u791011727_zoo_shop_user
+          MYSQL_PASSWORD: 7HqfBV~%e(4R.(!
+          MYSQL_DATABASE: u791011727_zoo_shop
+          MYSQL_ROOT_PASSWORD: root
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
         php-version: '8.1'
     - uses: actions/checkout@v3
+    - name: Verify MySQL connection
+      run: |
+        mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
     - name: Deploy to server
       uses: easingthemes/ssh-deploy@main
       with:
