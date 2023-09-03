@@ -37,7 +37,7 @@ jobs:
     - name: Execute migrations
       env:
         DB_CONNECTION: mysql
-        DB_HOST: 127.0.0.1
+        DB_HOST: localhost
         DB_PORT: 3306
         DB_DATABASE: u791011727_zoo_shop
         DB_USERNAME: u791011727_zoo_shop_user
