@@ -15,7 +15,14 @@ class CountryController extends AbstractAdminTableController
         $this->locales(config('localized-routes.supported-locales'));
 
         $this->addColumns([
-            Text::make('title', __('admin::common.title'))->translatable()->filter(TextFilter::make()),
+            'id',
+            'title',
+            'slug',
+            'code',
+        ]);
+
+        $this->addTab('General', [
+            Text::make('title')->translatable()->filter(TextFilter::make()),
             Text::make('slug')->filter(TextFilter::make()),
             Text::make('code')->filter(TextFilter::make()),
         ]);
