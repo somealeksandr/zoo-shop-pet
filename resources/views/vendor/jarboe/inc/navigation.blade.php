@@ -33,6 +33,34 @@
                     <span class="menu-item-parent">Countries</span>
                 </a>
             </li>
+
+            <li>
+                <a href="{{ admin_url('brands') }}">
+                    <i class="fa fa-lg fa-fw fa-user"></i>
+                    <span class="menu-item-parent">Brands</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ admin_url('category_animals') }}">
+                    <i class="fa fa-lg fa-fw fa-user"></i>
+                    <span class="menu-item-parent">Category Animals</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ admin_url('subcategory_animals') }}">
+                    <i class="fa fa-lg fa-fw fa-user"></i>
+                    <span class="menu-item-parent">Subcategory Animals</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ admin_url('products') }}">
+                    <i class="fa fa-lg fa-fw fa-user"></i>
+                    <span class="menu-item-parent">Products</span>
+                </a>
+            </li>
         </ul>
     </nav>
 

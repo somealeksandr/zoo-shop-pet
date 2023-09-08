@@ -44,6 +44,34 @@ return [
             'throw' => false,
         ],
 
+        'category_animal' => [
+            'driver' => 'local',
+            'root' => public_path('media/category_animal'),
+            'url' => env('APP_URL').'/media/category_animal',
+            'visibility' => 'public',
+        ],
+
+        'brands' => [
+            'driver' => 'local',
+            'root' => public_path('media/brands'),
+            'url' => env('APP_URL').'/media/brands',
+            'visibility' => 'public',
+        ],
+
+        'products' => [
+            'driver' => 'local',
+            'root' => public_path('media/products'),
+            'url' => env('APP_URL').'/media/products',
+            'visibility' => 'public',
+        ],
+
+        'countries' => [
+            'driver' => 'local',
+            'root' => public_path('media/countries'),
+            'url' => env('APP_URL').'/media/countries',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

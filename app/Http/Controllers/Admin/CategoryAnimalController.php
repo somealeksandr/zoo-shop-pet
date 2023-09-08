@@ -2,31 +2,33 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Jarboe\Fields\Image;
-use App\Models\Country;
+use App\Models\CategoryAnimal;
 use Yaro\Jarboe\Table\Fields\Text;
+use Yaro\Jarboe\Table\Fields\Textarea;
 use Yaro\Jarboe\Table\Filters\TextFilter;
+use App\Jarboe\Fields\Image;
 
-class CountryController extends AbstractAdminTableController
+class CategoryAnimalController extends AbstractAdminTableController
 {
 
     protected function init()
     {
-        $this->setModel(Country::class);
+        $this->setModel(CategoryAnimal::class);
         $this->locales(config('localized-routes.supported-locales'));
 
         $this->addColumns([
             'id',
             'title',
+            'description',
+            'icon',
             'slug',
-            'code',
         ]);
 
         $this->addTab('General', [
             Text::make('title')->translatable()->filter(TextFilter::make()),
+            Textarea::make('description')->translatable()->filter(TextFilter::make()),
             Text::make('slug')->filter(TextFilter::make()),
-            Image::make('icon')->disk('countries')->path('icon'),
-            Text::make('code')->filter(TextFilter::make()),
+            Image::make('icon')->disk('category_animal')->path('icon'),
         ]);
     }
 }
