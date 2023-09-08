@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Api\Auth\SignInController;
 use App\Http\Controllers\Api\Auth\SignUpController;
+use App\Http\Controllers\Api\CategoryAnimal\CategoryAnimalController;
 use App\Http\Controllers\Api\Profile\ProfileController;
+use App\Http\Controllers\Api\Subscription\SubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +24,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/ping', function () {
+    $product = \App\Models\Product::first();
+    $categoryByAnimal = $product->subcategoryAnimal->first()->categoryAnimal;
+    $subscribers = $categoryByAnimal->subscribers;
+    return $subscribers;
     return json_encode([
         'title' => 'Ping api',
         'description' => 'Ping api description',
@@ -43,4 +49,12 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth.jwt'], function () {
    Route::get('/me', [ProfileController::class, 'me']);
+});
+
+Route::group(['prefix' => 'subscriptions'], function () {
+    Route::post('/create', [SubscriptionController::class, 'create']);
+});
+
+Route::group(['prefix' => 'category-animals'], function () {
+    Route::get('/', [CategoryAnimalController::class, 'index']);
 });

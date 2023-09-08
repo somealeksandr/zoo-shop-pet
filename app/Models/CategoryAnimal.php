@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\Presenters\CategoryAnimalPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use SomePackage\Presenter\PresenterTrait;
@@ -11,21 +14,26 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
-class Country extends Model
+class CategoryAnimal extends Model
 {
     use HasFactory, HasTranslations, HasSlug, PresenterTrait;
 
-    protected $table = 'countries';
+    protected $table = 'category_animals';
+
+    protected string $presenter = CategoryAnimalPresenter::class;
 
     protected $fillable = [
         'id',
         'title',
+        'description',
         'icon',
         'slug',
-        'code',
     ];
 
-    protected array $translatable = ['title'];
+    protected array $translatable = [
+        'title',
+        'description',
+    ];
 
     protected $casts = [
         'icon' => 'array',
@@ -36,6 +44,16 @@ class Country extends Model
         return SlugOptions::create()
                           ->generateSlugsFrom('title')
                           ->saveSlugsTo('slug');
+    }
+
+    public function subscribers(): BelongsToMany
+    {
+        return $this->belongsToMany(Subscriber::class, 'category_animal_subscriber');
+    }
+
+    public function subcategories(): HasMany
+    {
+        return $this->hasMany(SubcategoryAnimal::class);
     }
 
     public function getIconUrlAttribute(): string
