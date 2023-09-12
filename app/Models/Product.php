@@ -47,13 +47,13 @@ class Product extends Model
     {
         parent::boot();
 
-        self::creating(function(Product $model) {
+        self::created(function(Product $model) {
             if ($model->is_promotional && $model->promotional_price) {
                 event(new MailingSubscriptions($model));
             }
         });
 
-        self::updating(function(Product $model) {
+        self::updated(function(Product $model) {
             if ($model->is_promotional && $model->promotional_price) {
                 event(new MailingSubscriptions($model));
             }
