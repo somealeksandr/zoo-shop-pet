@@ -24,10 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/ping', function () {
-    $product = \App\Models\Product::first();
-    $categoryByAnimal = $product->subcategoryAnimal->first()->categoryAnimal;
-    $subscribers = $categoryByAnimal->subscribers;
-    return $subscribers;
     return json_encode([
         'title' => 'Ping api',
         'description' => 'Ping api description',
