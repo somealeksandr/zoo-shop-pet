@@ -45,6 +45,8 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth.jwt'], function () {
    Route::get('/me', [ProfileController::class, 'me']);
+   Route::post('/update', [ProfileController::class, 'update']);
+   Route::post('/update-password', [ProfileController::class, 'updatePassword']);
 });
 
 Route::group(['prefix' => 'subscriptions'], function () {
