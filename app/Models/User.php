@@ -79,4 +79,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function getSubscriptionsAttribute()
+    {
+        $subscriber = Subscriber::query()->where('email', $this->email)->first();
+
+        return $subscriber->subscriptionCategories;
+    }
 }
