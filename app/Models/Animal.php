@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use App\Presenters\CategoryAnimalPresenter;
+use App\Presenters\AnimalPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use SomePackage\Presenter\PresenterTrait;
@@ -14,13 +13,13 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
-class CategoryAnimal extends Model
+class Animal extends Model
 {
     use HasFactory, HasTranslations, HasSlug, PresenterTrait;
 
-    protected $table = 'category_animals';
+    protected $table = 'animals';
 
-    protected string $presenter = CategoryAnimalPresenter::class;
+    protected string $presenter = AnimalPresenter::class;
 
     protected $fillable = [
         'id',
@@ -48,13 +47,13 @@ class CategoryAnimal extends Model
 
     public function subscribers(): BelongsToMany
     {
-        return $this->belongsToMany(Subscriber::class, 'category_animal_subscriber');
+        return $this->belongsToMany(Subscriber::class, 'animal_subscriber');
     }
 
-    public function subcategories(): HasMany
-    {
-        return $this->hasMany(SubcategoryAnimal::class);
-    }
+//    public function subcategories(): HasMany
+//    {
+//        return $this->hasMany(SubcategoryAnimal::class);
+//    }
 
     public function getIconUrlAttribute(): string
     {

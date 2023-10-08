@@ -4,7 +4,7 @@ namespace App\Presenters;
 
 use SomePackage\Presenter\AbstractPresenter;
 
-class CategoryAnimalPresenter extends AbstractPresenter
+class AnimalPresenter extends AbstractPresenter
 {
     protected $arrayable = [
         'id',

@@ -19,6 +19,6 @@ class Subscriber extends Model
 
     public function subscriptionCategories(): BelongsToMany
     {
-        return $this->belongsToMany(CategoryAnimal::class, 'category_animal_subscriber')->withTimestamps();
+        return $this->belongsToMany(Animal::class, 'category_animal_subscriber')->withTimestamps();
     }
 }

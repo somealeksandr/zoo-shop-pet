@@ -44,10 +44,10 @@ return [
             'throw' => false,
         ],
 
-        'category_animal' => [
+        'animal' => [
             'driver' => 'local',
-            'root' => public_path('media/category_animal'),
-            'url' => env('APP_URL').'/media/category_animal',
+            'root' => public_path('media/animal'),
+            'url' => env('APP_URL').'/media/animal',
             'visibility' => 'public',
         ],
 
