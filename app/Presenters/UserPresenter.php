@@ -12,5 +12,11 @@ class UserPresenter extends AbstractPresenter
         'surname',
         'email',
         'phone_number',
+        'subscriptions',
     ];
+
+    public function getSubscriptionsPresent()
+    {
+        return $this->model->subscriptions;
+    }
 }
