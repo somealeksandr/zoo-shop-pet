@@ -77,9 +77,14 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function subcategoryAnimal(): BelongsToMany
+    public function category(): BelongsToMany
     {
-        return $this->belongsToMany(SubcategoryAnimal::class, 'product_subcategory_animal');
+        return $this->belongsToMany(Category::class, 'category_product');
+    }
+
+    public function subcategory(): BelongsToMany
+    {
+        return $this->belongsToMany(Subcategory::class, 'product_subcategory');
     }
 
     public function getImageUrlAttribute(): string

@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\CategoryAnimal;
+use App\Models\Animal;
 use App\Models\Product;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -18,7 +18,7 @@ class MailingSubscriptionsMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private CategoryAnimal $category, private Product $product)
+    public function __construct(private Animal $category, private Product $product)
     {
         //
     }

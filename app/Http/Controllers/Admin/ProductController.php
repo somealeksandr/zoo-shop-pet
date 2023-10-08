@@ -45,11 +45,19 @@ class ProductController extends AbstractAdminTableController
             Select::make('country_id', 'Country')->relation('country', 'title')->default(request('country_id'))->type(Select::SELECT_2)->col(6),
             Select::make('brand_id', 'Brand')->relation('brand', 'title')->default(request('brand_id'))->type(Select::SELECT_2)->col(6),
 
-            Select::make('subcategory_animal_id', 'Subcategory Animal')
-                  ->relation('subcategoryAnimal', 'title_option')
-                  ->default(request('subcategory_animal_id'))
+            Select::make('subcategory_id', 'Subcategory')
+                  ->relation('subcategory', 'title_option')
+                  ->default(request('subcategory_id'))
                   ->type(Select::SELECT_2)
+                  ->nullable()
                   ->col(6),
+
+            Select::make('category_id', 'Category')
+                ->relation('category', 'title_option')
+                ->default(request('category_id'))
+                ->type(Select::SELECT_2)
+                ->nullable()
+                ->col(6),
         ]);
     }
 }

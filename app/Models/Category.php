@@ -11,18 +11,18 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
-class SubcategoryAnimal extends Model
+class Category extends Model
 {
     use HasFactory, HasTranslations, HasSlug;
 
-    protected $table = 'subcategory_animals';
+    protected $table = 'categories';
 
     protected $fillable = [
         'id',
         'title',
         'description',
         'slug',
-        'category_animal_id',
+        'animal_id',
     ];
 
     protected array $translatable = [
@@ -33,22 +33,25 @@ class SubcategoryAnimal extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-                          ->generateSlugsFrom('title')
-                          ->saveSlugsTo('slug');
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
     }
 
-    public function categoryAnimal(): BelongsTo
+    public function animal(): BelongsTo
     {
-        return $this->belongsTo(CategoryAnimal::class);
+        return $this->belongsTo(Animal::class);
     }
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'product_subcategory_animal');
+        return $this->belongsToMany(Product::class, 'category_product');
     }
 
     public function getTitleOptionAttribute(): string
     {
-        return $this->categoryAnimal->title . ' - ' . Str::upper($this->title);
+        if ($this->animal) {
+            return $this->animal->title . ' - ' . Str::upper($this->title);
+        }
+        return Str::upper($this->title);
     }
 }

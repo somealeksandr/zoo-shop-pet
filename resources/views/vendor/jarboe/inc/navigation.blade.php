@@ -42,16 +42,23 @@
             </li>
 
             <li>
-                <a href="{{ admin_url('category_animals') }}">
+                <a href="{{ admin_url('animals') }}">
                     <i class="fa fa-lg fa-fw fa-user"></i>
-                    <span class="menu-item-parent">Category Animals</span>
+                    <span class="menu-item-parent">Animals</span>
                 </a>
             </li>
 
             <li>
-                <a href="{{ admin_url('subcategory_animals') }}">
+                <a href="{{ admin_url('categories') }}">
                     <i class="fa fa-lg fa-fw fa-user"></i>
-                    <span class="menu-item-parent">Subcategory Animals</span>
+                    <span class="menu-item-parent">Categories</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ admin_url('subcategories') }}">
+                    <i class="fa fa-lg fa-fw fa-user"></i>
+                    <span class="menu-item-parent">Subcategories</span>
                 </a>
             </li>
 
