@@ -11,4 +11,14 @@ class CategoryController extends AbstractApiController
     {
         return Category::all();
     }
+
+    public function subcategories(Category $category)
+    {
+        return $category->subcategories;
+    }
+
+    public function products(Category $category)
+    {
+        return $category->products;
+    }
 }

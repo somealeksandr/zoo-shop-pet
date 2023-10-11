@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 use SomePackage\Presenter\PresenterTrait;
 use Spatie\Sluggable\HasSlug;
@@ -44,6 +45,11 @@ class Category extends Model
     public function animal(): BelongsTo
     {
         return $this->belongsTo(Animal::class);
+    }
+
+    public function subcategories(): HasMany
+    {
+        return $this->hasMany(Subcategory::class);
     }
 
     public function products(): BelongsToMany
