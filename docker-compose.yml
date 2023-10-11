@@ -1,0 +1,46 @@
+version: "3.7"
+services:
+    app:
+        build:
+            args:
+                user: some
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        image: zoo-shop
+        container_name: zoo-shop-app
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        networks:
+            - zoo-shop
+
+    db:
+        image: postgres:13
+        container_name: zoo-shop-db
+        restart: unless-stopped
+        environment:
+            POSTGRES_DB: ${DB_DATABASE}
+            POSTGRES_USER: ${DB_USERNAME}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+        volumes:
+            - ./docker-compose/postgresql:/docker-entrypoint-initdb.d
+        networks:
+            - zoo-shop
+
+    nginx:
+        image: nginx:alpine
+        container_name: zoo-shop-nginx
+        restart: unless-stopped
+        ports:
+            - 8000:80
+        volumes:
+            - ./:/var/www
+            - ./docker-compose/nginx:/etc/nginx/conf.d/
+        networks:
+            - zoo-shop
+
+networks:
+    zoo-shop:
+        driver: bridge
