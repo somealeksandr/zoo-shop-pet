@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Events\MailingSubscriptions;
+use App\Presenters\ProductPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -19,6 +20,8 @@ class Product extends Model
     use HasFactory, HasTranslations, HasSlug, PresenterTrait;
 
     protected $table = 'products';
+
+    protected string $presenter = ProductPresenter::class;
 
     protected $fillable = [
         'id',

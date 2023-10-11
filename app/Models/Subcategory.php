@@ -2,20 +2,24 @@
 
 namespace App\Models;
 
+use App\Presenters\SubcategoryPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
+use SomePackage\Presenter\PresenterTrait;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
 class Subcategory extends Model
 {
-    use HasFactory, HasTranslations, HasSlug;
+    use HasFactory, HasTranslations, HasSlug, PresenterTrait;
 
     protected $table = 'subcategories';
+
+    protected string $presenter = SubcategoryPresenter::class;
 
     protected $fillable = [
         'id',

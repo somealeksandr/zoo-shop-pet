@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Api\Auth\SignInController;
 use App\Http\Controllers\Api\Auth\SignUpController;
-use App\Http\Controllers\Api\CategoryAnimal\CategoryAnimalController;
+use App\Http\Controllers\Api\Animal\AnimalController;
+use App\Http\Controllers\Api\Category\CategoryController;
+use App\Http\Controllers\Api\Category\SubcategoryController;
+use App\Http\Controllers\Api\Product\ProductController;
 use App\Http\Controllers\Api\Profile\ProfileController;
 use App\Http\Controllers\Api\Subscription\SubscriptionController;
 use Illuminate\Http\Request;
@@ -53,6 +56,8 @@ Route::group(['prefix' => 'subscriptions'], function () {
     Route::post('/create', [SubscriptionController::class, 'create']);
 });
 
-Route::group(['prefix' => 'category-animals'], function () {
-    Route::get('/', [CategoryAnimalController::class, 'index']);
-});
+Route::get('/animals', [AnimalController::class, 'index']);
+
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/subcategories', [SubcategoryController::class, 'index']);
+Route::get('/products', [ProductController::class, 'index']);
