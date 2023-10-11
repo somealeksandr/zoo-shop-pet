@@ -27,10 +27,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/ping', function () {
-    $product = \App\Models\Product::first();
-    $categoryByAnimal = $product->subcategoryAnimal->first()->categoryAnimal;
-    $subscribers = $categoryByAnimal->subscribers;
-    return $subscribers;
     return json_encode([
         'title' => 'Ping api',
         'description' => 'Ping api description',
@@ -52,6 +48,8 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth.jwt'], function () {
    Route::get('/me', [ProfileController::class, 'me']);
+   Route::post('/update', [ProfileController::class, 'update']);
+   Route::post('/update-password', [ProfileController::class, 'updatePassword']);
 });
 
 Route::group(['prefix' => 'subscriptions'], function () {
