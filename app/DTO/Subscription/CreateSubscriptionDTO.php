@@ -8,5 +8,5 @@ class CreateSubscriptionDTO extends BaseDTO
 {
     public string $email;
 
-    public array $category_animal_id;
+    public array $animal_id;
 }

@@ -17,13 +17,13 @@ class CreateSubscriptionRequest extends AbstractApiRequest
                 'required',
                 'email',
             ],
-            'category_animal_id' => [
+            'animal_id' => [
                 'required',
                 'array',
             ],
-            'category_animal_id.*' => [
+            'animal_id.*' => [
                 'required',
-                Rule::exists('category_animals', 'id')
+                Rule::exists('animals', 'id')
             ],
         ];
     }

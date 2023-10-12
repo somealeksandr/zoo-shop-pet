@@ -22,6 +22,6 @@ class Create implements CaseHandler
             ]);
         }
 
-        $subscriber->subscriptionCategories()->sync($this->createSubscriptionDTO->category_animal_id);
+        $subscriber->subscriptionAnimals()->sync($this->createSubscriptionDTO->animal_id);
     }
 }
