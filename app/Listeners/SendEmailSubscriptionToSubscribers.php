@@ -15,8 +15,8 @@ class SendEmailSubscriptionToSubscribers implements ShouldQueue
      */
     public function handle(MailingSubscriptions $event): void
     {
-        $animal = $event->product->category->first()->animal;
-        $subscribers = $animal->subscribers;
+        $animal = $event->product->category?->first()->animal ?? null;
+        $subscribers = $animal?->subscribers ?? 0;
 
         if (count($subscribers) > 0) {
             foreach ($subscribers as $subscriber) {
