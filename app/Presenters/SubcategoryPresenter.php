@@ -14,7 +14,7 @@ class SubcategoryPresenter extends AbstractPresenter
         'category',
     ];
 
-    public function getCategoryPresenter(): string
+    public function getCategoryPresent(): string
     {
         return $this->model->category->title;
     }

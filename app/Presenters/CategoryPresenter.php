@@ -14,7 +14,7 @@ class CategoryPresenter extends AbstractPresenter
         'animal',
     ];
 
-    public function getAnimalPresenter(): string
+    public function getAnimalPresent(): string
     {
         return $this->model->animal->title;
     }

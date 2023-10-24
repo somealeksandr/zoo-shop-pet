@@ -15,8 +15,8 @@ class AnimalPresenter extends AbstractPresenter
         'icon_url',
     ];
 
-    public function getCategoryPresenter()
+    public function getCategoryPresent(): int
     {
-        return $this->model->category->id;
+        return $this->model->category?->id;
     }
 }

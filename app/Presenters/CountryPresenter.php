@@ -14,12 +14,12 @@ class CountryPresenter extends AbstractPresenter
         'code',
     ];
 
-    public function getCountryPresenter(): string
+    public function getCountryPresent(): string
     {
         return $this->model->country->title;
     }
 
-    public function getBrandPresenter(): string
+    public function getBrandPresent(): string
     {
         return $this->model->brand->title;
     }
