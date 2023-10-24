@@ -4,20 +4,14 @@ namespace App\Presenters;
 
 use SomePackage\Presenter\AbstractPresenter;
 
-class ProductPresenter extends AbstractPresenter
+class CountryPresenter extends AbstractPresenter
 {
     protected $arrayable = [
         'id',
         'title',
-        'description',
-        'image_url',
+        'icon_url',
         'slug',
-        'price',
-        'promotional_price',
-        'is_promotional',
-        'quantity',
-        'country',
-        'brand',
+        'code',
     ];
 
     public function getCountryPresenter(): string

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Presenters\CountryPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -16,6 +17,8 @@ class Country extends Model
     use HasFactory, HasTranslations, HasSlug, PresenterTrait;
 
     protected $table = 'countries';
+
+    protected string $presenter = CountryPresenter::class;
 
     protected $fillable = [
         'id',

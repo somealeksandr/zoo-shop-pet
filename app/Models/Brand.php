@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Presenters\BrandPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,6 +18,8 @@ class Brand extends Model
     use HasFactory, HasTranslations, HasSlug, PresenterTrait;
 
     protected $table = 'brands';
+
+    protected string $presenter = BrandPresenter::class;
 
     protected $fillable = [
         'id',
