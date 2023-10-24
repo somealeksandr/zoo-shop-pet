@@ -67,4 +67,8 @@ Route::group(['prefix' => 'categories'], function () {
 
 
 Route::get('/subcategories', [SubcategoryController::class, 'index']);
-Route::get('/products', [ProductController::class, 'index']);
+
+Route::group(['prefix' => 'products'], function () {
+    Route::get('/', [ProductController::class, 'index']);
+    Route::post('/{product}/favorite', [ProductController::class, 'toggleFavorite'])->middleware('auth.jwt');
+});

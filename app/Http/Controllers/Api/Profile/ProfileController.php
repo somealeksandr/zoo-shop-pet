@@ -37,4 +37,9 @@ class ProfileController extends AbstractApiController
 
         return $this->success([], 'Password successful update!');
     }
+
+    public function storeFavorite()
+    {
+        
+    }
 }

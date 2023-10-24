@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Presenters\UserPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -85,5 +86,10 @@ class User extends Authenticatable implements JWTSubject
         $subscriber = Subscriber::query()->where('email', $this->email)->first();
 
         return $subscriber->subscriptionAnimals ?? null;
+    }
+
+    public function favorites(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'favorite_product_users');
     }
 }

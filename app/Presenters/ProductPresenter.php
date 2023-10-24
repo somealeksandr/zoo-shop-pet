@@ -20,9 +20,9 @@ class ProductPresenter extends AbstractPresenter
         'brand',
     ];
 
-    public function getCountryPresent(): string
+    public function getCountryPresent(): object
     {
-        return $this->model->country->title;
+        return $this->model->country;
     }
 
     public function getBrandPresent(): string
