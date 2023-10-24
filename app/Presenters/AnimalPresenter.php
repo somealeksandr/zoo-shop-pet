@@ -17,6 +17,6 @@ class AnimalPresenter extends AbstractPresenter
 
     public function getCategoryPresenter()
     {
-        return $this->model->category;
+        return $this->model->category->id;
     }
 }
