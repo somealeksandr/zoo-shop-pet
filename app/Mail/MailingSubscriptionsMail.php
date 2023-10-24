@@ -18,7 +18,7 @@ class MailingSubscriptionsMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private Animal $category, private Product $product)
+    public function __construct(private Animal $animal, private Product $product)
     {
         //
     }
@@ -26,7 +26,7 @@ class MailingSubscriptionsMail extends Mailable
     public function build(): MailingSubscriptionsMail
     {
         return $this->view('mail.mailing_subscriptions')->with([
-            'category' => $this->category,
+            'animal' => $this->animal,
             'product' => $this->product,
         ]);
     }

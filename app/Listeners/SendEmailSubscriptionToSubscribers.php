@@ -15,12 +15,12 @@ class SendEmailSubscriptionToSubscribers implements ShouldQueue
      */
     public function handle(MailingSubscriptions $event): void
     {
-        $categoryByAnimal = $event->product->subcategoryAnimal->first()->categoryAnimal;
-        $subscribers = $categoryByAnimal->subscribers;
+        $animal = $event->product->category->first()->animal;
+        $subscribers = $animal->subscribers;
 
         if (count($subscribers) > 0) {
             foreach ($subscribers as $subscriber) {
-                Mail::to($subscriber->email)->send(new MailingSubscriptionsMail($categoryByAnimal, $event->product));
+                Mail::to($subscriber->email)->send(new MailingSubscriptionsMail($animal, $event->product));
             }
         }
     }

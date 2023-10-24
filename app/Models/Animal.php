@@ -56,11 +56,6 @@ class Animal extends Model
         return $this->hasOne(Category::class);
     }
 
-//    public function subcategories(): HasMany
-//    {
-//        return $this->hasMany(SubcategoryAnimal::class);
-//    }
-
     public function getIconUrlAttribute(): string
     {
         if ($this->icon) {
