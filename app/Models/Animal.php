@@ -6,6 +6,7 @@ use App\Presenters\AnimalPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use SomePackage\Presenter\PresenterTrait;
@@ -48,6 +49,11 @@ class Animal extends Model
     public function subscribers(): BelongsToMany
     {
         return $this->belongsToMany(Subscriber::class, 'animal_subscriber');
+    }
+
+    public function category(): HasOne
+    {
+        return $this->hasOne(Category::class);
     }
 
 //    public function subcategories(): HasMany
