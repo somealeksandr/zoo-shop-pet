@@ -17,6 +17,11 @@ class ProductController extends AbstractApiController
         return Product::all();
     }
 
+    public function getProduct(Product $product)
+    {
+        return $product;
+    }
+
     public function toggleFavorite(Product $product)
     {
         $this->service->toggleFavorite($product);
