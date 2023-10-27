@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Events\MailingSubscriptions;
 use App\Presenters\ProductPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -46,23 +45,6 @@ class Product extends Model
         'image' => 'array',
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        self::created(function(Product $model) {
-            if ($model->is_promotional && $model->promotional_price) {
-                event(new MailingSubscriptions($model));
-            }
-        });
-
-        self::updated(function(Product $model) {
-            if ($model->is_promotional && $model->promotional_price) {
-                event(new MailingSubscriptions($model));
-            }
-        });
-    }
-
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
@@ -78,6 +60,11 @@ class Product extends Model
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function animal(): BelongsToMany
+    {
+        return $this->belongsToMany(Animal::class, 'animal_product');
     }
 
     public function category(): BelongsToMany

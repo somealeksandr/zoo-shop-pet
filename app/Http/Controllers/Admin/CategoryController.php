@@ -28,7 +28,11 @@ class CategoryController extends AbstractAdminTableController
             Text::make('title')->translatable()->filter(TextFilter::make()),
             Textarea::make('description')->translatable()->filter(TextFilter::make()),
             Text::make('slug')->filter(TextFilter::make()),
-            Select::make('animal_id', 'Animal')->relation('animal', 'title')->default(request('animal_id'))->type(Select::SELECT_2)->col(6)->nullable(),
+            Select::make('animal_id', 'Animal')
+                  ->relation('animal', 'title')
+                  ->default(request('animal_id'))
+                  ->type(Select::SELECT_2)
+                  ->col(6),
         ]);
     }
 }

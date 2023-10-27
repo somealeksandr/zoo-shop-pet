@@ -73,3 +73,5 @@ Route::group(['prefix' => 'products'], function () {
     Route::get('/{product}', [ProductController::class, 'getProduct']);
     Route::post('/{product}/favorite', [ProductController::class, 'toggleFavorite'])->middleware('auth.jwt');
 });
+
+Route::get('/filters/{slug}', [ProductController::class, 'getFiltersWithCounts']);
