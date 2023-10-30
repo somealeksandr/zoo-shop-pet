@@ -59,14 +59,14 @@ Route::group(['prefix' => 'subscriptions'], function () {
 Route::get('/animals', [AnimalController::class, 'index']);
 
 
-Route::group(['prefix' => 'subcategories'], function () {
+Route::group(['prefix' => 'categories'], function () {
     Route::get('/', [CategoryController::class, 'index']);
     Route::get('/{category}/subcategories', [CategoryController::class, 'subcategories']);
     Route::get('/{category}/products', [CategoryController::class, 'products']);
 });
 
 
-Route::group(['prefix' => 'categories'], function () {
+Route::group(['prefix' => 'subcategories'], function () {
     Route::get('/', [SubcategoryController::class, 'index']);
     Route::get('/{subcategory}/products', [SubcategoryController::class, 'products']);
 });
