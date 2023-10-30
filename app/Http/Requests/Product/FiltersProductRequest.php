@@ -44,7 +44,7 @@ class FiltersProductRequest extends AbstractApiRequest
 //                'sometimes'
 //            ],
             'sort' => [
-                Rule::in(['cheap', 'expensive', 'new'])
+                Rule::in(['cheap', 'expensive', 'new', 'old'])
             ]
         ];
     }
