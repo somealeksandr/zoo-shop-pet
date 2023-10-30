@@ -16,6 +16,12 @@ class FiltersProductRequest extends AbstractApiRequest
             'price_max' => [
                 'min:1'
             ],
+            'subcategories' => [
+                'array'
+            ],
+            'subcategories.*' => [
+                'exists:subcategories,slug'
+            ],
             'brands' => [
                 'array'
             ],

@@ -66,7 +66,10 @@ Route::group(['prefix' => 'categories'], function () {
 });
 
 
-Route::get('/subcategories', [SubcategoryController::class, 'index']);
+Route::group(['prefix' => 'categories'], function () {
+    Route::get('/', [SubcategoryController::class, 'index']);
+    Route::get('/{subcategory}/products', [SubcategoryController::class, 'products']);
+});
 
 Route::group(['prefix' => 'products'], function () {
     Route::get('/', [ProductController::class, 'index']);
