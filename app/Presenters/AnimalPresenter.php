@@ -10,13 +10,13 @@ class AnimalPresenter extends AbstractPresenter
         'id',
         'title',
         'description',
-        'category',
+        'categories',
         'slug',
         'icon_url',
     ];
 
-    public function getCategoryPresent(): ?int
+    public function getCategoriesPresent(): ?object
     {
-        return $this->model->category?->id;
+        return $this->model->categories;
     }
 }

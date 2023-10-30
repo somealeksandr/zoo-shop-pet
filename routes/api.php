@@ -56,7 +56,10 @@ Route::group(['prefix' => 'subscriptions'], function () {
     Route::post('/create', [SubscriptionController::class, 'create']);
 });
 
-Route::get('/animals', [AnimalController::class, 'index']);
+Route::group(['prefix' => 'animals'], function () {
+    Route::get('/', [AnimalController::class, 'index']);
+    Route::get('/{animal}/categories', [AnimalController::class, 'categories']);
+});
 
 
 Route::group(['prefix' => 'categories'], function () {

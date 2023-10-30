@@ -18,4 +18,9 @@ class AnimalController extends AbstractApiController
     {
         return $this->service->index();
     }
+
+    public function categories(Animal $animal): Collection
+    {
+        return $animal->categories;
+    }
 }
