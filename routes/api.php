@@ -54,6 +54,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth.jwt'], function () {
 
 Route::group(['prefix' => 'subscriptions'], function () {
     Route::post('/create', [SubscriptionController::class, 'create']);
+    Route::post('/delete', [SubscriptionController::class, 'delete']);
 });
 
 Route::group(['prefix' => 'animals'], function () {
