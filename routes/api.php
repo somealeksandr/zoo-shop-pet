@@ -60,6 +60,7 @@ Route::group(['prefix' => 'subscriptions'], function () {
 Route::group(['prefix' => 'animals'], function () {
     Route::get('/', [AnimalController::class, 'index']);
     Route::get('/{animal}/categories', [AnimalController::class, 'categories']);
+    Route::get('/{animal}/products', [AnimalController::class, 'products']);
 });
 
 

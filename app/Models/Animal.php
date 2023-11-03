@@ -56,6 +56,11 @@ class Animal extends Model
         return $this->hasMany(Category::class);
     }
 
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'animal_product');
+    }
+
     public function getIconUrlAttribute(): string
     {
         if ($this->icon) {
