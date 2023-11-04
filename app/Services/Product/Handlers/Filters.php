@@ -29,17 +29,17 @@ class Filters implements CaseHandler
         $subcategories = [];
         $category = Category::whereSlug($this->slug)->first();
         foreach (Subcategory::where('category_id', $category->id)->get() as $subcategory) {
-            $subcategories[$subcategory->slug] = $subcategory->products()->whereIn('product_id', $productIds)->count();
+            $subcategories[$subcategory->title] = $subcategory->products()->whereIn('product_id', $productIds)->count();
         }
 
         $brands = [];
         foreach (Brand::all() as $brand) {
-            $brands[$brand->slug] = $this->getProductsCondition($brand, $productIds);
+            $brands[$brand->title] = $this->getProductsCondition($brand, $productIds);
         }
 
         $countries = [];
         foreach (Country::all() as $country) {
-            $countries[$country->slug] = $this->getProductsCondition($country, $productIds);;
+            $countries[$country->title] = $this->getProductsCondition($country, $productIds);;
         }
 
         $min = $products->where('price', $products->min('price'))->first();
