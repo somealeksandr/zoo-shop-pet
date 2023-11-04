@@ -27,7 +27,8 @@ class Filters implements CaseHandler
         $productIds = $products->pluck('id')->toArray();
 
         $subcategories = [];
-        foreach (Subcategory::all() as $subcategory) {
+        $category = Category::whereSlug($this->slug)->first();
+        foreach (Subcategory::where('category_id', $category->id)->get() as $subcategory) {
             $subcategories[$subcategory->slug] = $subcategory->products()->whereIn('product_id', $productIds)->count();
         }
 
