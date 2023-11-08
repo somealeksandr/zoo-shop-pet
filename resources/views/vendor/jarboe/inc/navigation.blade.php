@@ -68,6 +68,22 @@
                     <span class="menu-item-parent">Products</span>
                 </a>
             </li>
+
+            <li>
+                <a href="#" title="Admin Panel"><i class="fa fa-lg fa-fw fa-newspaper-o"></i> <span class="menu-item-parent">News</span></a>
+                <ul>
+                    <li>
+                        <a href="{{ admin_url('category-news') }}">
+                            <span class="menu-item-parent">Category News</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ admin_url('news') }}">
+                            <span class="menu-item-parent">News</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </nav>
 
@@ -87,7 +103,7 @@
             if (~index) {
                 href = window.location.href.substring(0, index);
             }
-            if (this.href.replace(/\/$/, '') == href.replace(/\/$/, '')) {
+            if (this.href.replace(/\/$/, '') === href.replace(/\/$/, '')) {
                 $(this).closest('li').addClass('active');
             }
         });

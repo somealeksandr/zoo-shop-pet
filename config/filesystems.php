@@ -65,6 +65,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'news' => [
+            'driver' => 'local',
+            'root' => public_path('media/news'),
+            'url' => env('APP_URL').'/media/news',
+            'visibility' => 'public',
+        ],
+
         'countries' => [
             'driver' => 'local',
             'root' => public_path('media/countries'),
