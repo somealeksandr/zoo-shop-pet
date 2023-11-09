@@ -3,7 +3,9 @@
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\AnimalController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CategoryNewsController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\UserController;
@@ -19,3 +21,5 @@ Jarboe::crud('animals', AnimalController::class);
 Jarboe::crud('categories', CategoryController::class);
 Jarboe::crud('subcategories', SubcategoryController::class);
 Jarboe::crud('products', ProductController::class);
+Jarboe::crud('category-news', CategoryNewsController::class);
+Jarboe::crud('news', NewsController::class);
