@@ -18,7 +18,7 @@ class PrepareFilters implements CaseHandler
         $productsQuery = $this->productsQuery;
 
         if (isset($dto->subcategories)) {
-            $subcategoryIds = Subcategory::whereIn('slug', array($dto->subcategories))->pluck('id')->toArray();
+            $subcategoryIds = Subcategory::whereIn('slug', $dto->subcategories)->pluck('id')->toArray();
             $productsQuery->whereHas('subcategory', function ($query) use ($subcategoryIds) {
                 $query->whereIn('subcategory_id', $subcategoryIds);
             });
