@@ -2,6 +2,7 @@
 
 namespace App\Services\Product\Handlers\Internal;
 
+use App\Models\Subcategory;
 use App\Services\CaseHandler;
 use Carbon\Carbon;
 
@@ -17,7 +18,10 @@ class PrepareFilters implements CaseHandler
         $productsQuery = $this->productsQuery;
 
         if (isset($dto->subcategories)) {
-            $productsQuery->whereBetween('price', array($dto->price_min, $dto->price_max));
+            $subcategoryIds = Subcategory::whereIn('slug', array($dto->subcategories))->pluck('id')->toArray();
+            $productsQuery->whereHas('subcategory', function ($query) use ($subcategoryIds) {
+                $query->whereIn('subcategory_id', $subcategoryIds);
+            });
         }
 
         if (isset($dto->price_min) && isset($dto->price_max)) {

@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\Auth\SignUpController;
 use App\Http\Controllers\Api\Animal\AnimalController;
 use App\Http\Controllers\Api\Category\CategoryController;
 use App\Http\Controllers\Api\Category\SubcategoryController;
+use App\Http\Controllers\Api\News\NewsController;
 use App\Http\Controllers\Api\Product\ProductController;
 use App\Http\Controllers\Api\Profile\ProfileController;
 use App\Http\Controllers\Api\Subscription\SubscriptionController;
@@ -83,3 +84,8 @@ Route::group(['prefix' => 'products'], function () {
 });
 
 Route::get('/filters/{slug}', [ProductController::class, 'getFiltersWithCounts']);
+
+Route::group(['prefix' => 'news'], function () {
+    Route::get('/', [NewsController::class, 'index']);
+    Route::get('/{slug}', [NewsController::class, 'show']);
+});
