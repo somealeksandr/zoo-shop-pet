@@ -30,13 +30,13 @@ class PrepareFilters implements CaseHandler
 
         if ($dto->brands) {
             $productsQuery->whereHas('brand', function ($query) use ($dto) {
-                $query->whereIn('slug', array($dto->brands));
+                $query->whereIn('slug', $dto->brands);
             });
         }
 
         if ($dto->countries) {
             $productsQuery->whereHas('country', function ($query) use ($dto) {
-                $query->whereIn('slug', array($dto->countries));
+                $query->whereIn('slug', $dto->countries);
             });
         }
 
