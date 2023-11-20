@@ -18,6 +18,9 @@ class ProductPresenter extends AbstractPresenter
         'quantity',
         'country',
         'brand',
+        'animal',
+        'category',
+        'subcategory',
     ];
 
     public function getCountryPresent(): object
@@ -28,5 +31,28 @@ class ProductPresenter extends AbstractPresenter
     public function getBrandPresent(): string
     {
         return $this->model->brand->title;
+    }
+
+    public function getAnimalPresent(): ?array
+    {
+        return $this->getRelationPresent($this->model->animal);
+    }
+
+    public function getCategoryPresent(): ?array
+    {
+        return $this->getRelationPresent($this->model->category);
+    }
+
+    public function getSubcategoryPresent(): ?array
+    {
+        return $this->getRelationPresent($this->model->subcategory);
+    }
+
+    private function getRelationPresent($relation): ?array
+    {
+        return [
+            'title' => $relation?->first()?->title,
+            'slug' => $relation?->first()?->slug,
+        ];
     }
 }
