@@ -22,6 +22,15 @@ class CategoryPresenter extends AbstractPresenter
 
     public function getSubcategoriesPresent(): array
     {
-        return $this->model->subcategories->pluck('title', 'id')->toArray();
+        $data = [];
+        foreach ($this->model->subcategories as $subcategory) {
+            $data[] = [
+                'id' => $subcategory->id,
+                'title' => $subcategory->title,
+                'slug' => $subcategory->slug,
+            ];
+        }
+
+        return $data;
     }
 }
