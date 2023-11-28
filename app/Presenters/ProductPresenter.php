@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 
+use Carbon\Carbon;
 use SomePackage\Presenter\AbstractPresenter;
 
 class ProductPresenter extends AbstractPresenter
@@ -15,6 +16,7 @@ class ProductPresenter extends AbstractPresenter
         'price',
         'promotional_price',
         'is_promotional',
+        'is_new',
         'quantity',
         'country',
         'brand',
@@ -46,6 +48,11 @@ class ProductPresenter extends AbstractPresenter
     public function getSubcategoryPresent(): ?array
     {
         return $this->getRelationPresent($this->model->subcategory);
+    }
+
+    public function getIsNewPresent(): ?bool
+    {
+        return $this->created_at >= Carbon::now()->subDays(7)->toDateTimeString();
     }
 
     private function getRelationPresent($relation): ?array
