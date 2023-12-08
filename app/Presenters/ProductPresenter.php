@@ -10,6 +10,7 @@ class ProductPresenter extends AbstractPresenter
     protected $arrayable = [
         'id',
         'title',
+        'short_description',
         'description',
         'image_url',
         'slug',

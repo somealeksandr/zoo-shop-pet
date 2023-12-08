@@ -42,6 +42,7 @@ class ProductController extends AbstractAdminTableController
 
         $this->addTab('General', [
             Text::make('title')->translatable()->filter(TextFilter::make()),
+            Textarea::make('short_description')->translatable(),
             Textarea::make('description')->translatable(),
             Image::make('image')->disk('products')->path('image'),
             Text::make('slug')->filter(TextFilter::make()),

@@ -25,6 +25,7 @@ class Product extends Model
     protected $fillable = [
         'id',
         'title',
+        'short_description',
         'description',
         'image',
         'slug',
@@ -38,6 +39,7 @@ class Product extends Model
 
     protected array $translatable = [
         'title',
+        'short_description',
         'description',
     ];
 
