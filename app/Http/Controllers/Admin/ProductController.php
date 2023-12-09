@@ -15,6 +15,7 @@ use Yaro\Jarboe\Table\Fields\Text;
 use Yaro\Jarboe\Table\Fields\Textarea;
 use Yaro\Jarboe\Table\Filters\CheckboxFilter;
 use Yaro\Jarboe\Table\Filters\NumberFilter;
+use Yaro\Jarboe\Table\Filters\SelectFilter;
 use Yaro\Jarboe\Table\Filters\TextFilter;
 use App\Jarboe\Fields\Image;
 
@@ -29,13 +30,13 @@ class ProductController extends AbstractAdminTableController
         $this->addColumns([
             'id',
             'title',
-            'image',
             'slug',
             'price',
-            'quantity',
-            'promotional_price',
+//            'quantity',
+//            'promotional_price',
             'is_promotional',
-            'quantity',
+            'category_id',
+            'subcategory_id',
             'country_id',
             'brand_id',
         ]);
@@ -58,13 +59,15 @@ class ProductController extends AbstractAdminTableController
                   ->default(request('subcategory_id'))
                   ->type(Select::SELECT_2)
                   ->nullable()
-                  ->col(6),
+                  ->col(6)
+                  ->filter(SelectFilter::make()),
 
             Select::make('category_id', 'Category')
                 ->relation('category', 'title_option')
                 ->default(request('category_id'))
                 ->type(Select::SELECT_2)
-                ->col(6),
+                ->col(6)
+                ->filter(SelectFilter::make()),
         ]);
     }
 
