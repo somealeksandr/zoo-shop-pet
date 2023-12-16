@@ -24,6 +24,7 @@ class News extends Model
     protected $fillable = [
         'id',
         'title',
+        'short_description',
         'content',
         'image',
         'category_id',
@@ -32,7 +33,7 @@ class News extends Model
         'published_at',
     ];
 
-    protected array $translatable = ['title', 'content'];
+    protected array $translatable = ['title', 'content', 'short_description',];
 
     protected $casts = [
         'image' => 'array',

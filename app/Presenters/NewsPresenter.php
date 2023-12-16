@@ -9,6 +9,7 @@ class NewsPresenter extends AbstractPresenter
     protected $arrayable = [
         'id',
         'title',
+        'short_description',
         'content',
         'image_url',
         'category',

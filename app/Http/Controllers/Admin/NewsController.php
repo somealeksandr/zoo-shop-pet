@@ -29,6 +29,7 @@ class NewsController extends AbstractAdminTableController
 
         $this->addTab('General', [
             Text::make('title')->translatable()->filter(TextFilter::make()),
+            Wysiwyg::make('short_description',)->translatable(),
             Wysiwyg::make('content')->translatable(),
             Image::make('image')->disk('news')->path('image'),
             Text::make('slug')->filter(TextFilter::make()),
