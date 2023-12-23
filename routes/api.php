@@ -86,6 +86,7 @@ Route::group(['prefix' => 'products'], function () {
 Route::get('/filters/{slug}', [ProductController::class, 'getFiltersWithCounts']);
 
 Route::group(['prefix' => 'news'], function () {
+    Route::get('/categories', [NewsController::class, 'categories']);
     Route::get('/', [NewsController::class, 'index']);
     Route::get('/{slug}', [NewsController::class, 'show']);
 });
