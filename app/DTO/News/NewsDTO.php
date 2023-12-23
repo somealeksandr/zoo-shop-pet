@@ -9,4 +9,6 @@ class NewsDTO extends BaseDTO
     public ?int $amount;
 
     public ?int $per_page;
+
+    public ?array $categories;
 }

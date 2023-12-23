@@ -5,6 +5,7 @@ namespace App\Services\News\Handlers;
 use App\DTO\News\NewsDTO;
 use App\Models\News;
 use App\Services\CaseHandler;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class Index implements CaseHandler
 {
@@ -12,12 +13,18 @@ class Index implements CaseHandler
     {
     }
 
-    public function handle()
+    public function handle(): LengthAwarePaginator
     {
+        $query = News::query();
+
         if ($this->newsDTO->amount) {
-            return News::query()->orderBy('created_at', 'desc')->take($this->newsDTO->amount)->get();
+            $query->orderBy('created_at', 'desc')->take($this->newsDTO->amount);
         }
 
-        return News::query()->paginate($this->newsDTO->per_page);
+        if (isset($this->newsDTO->categories)) {
+            $query->whereIn('category_id', $this->newsDTO->categories);
+        }
+
+        return $query->paginate($this->newsDTO->per_page);
     }
 }

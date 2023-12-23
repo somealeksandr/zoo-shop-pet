@@ -16,7 +16,13 @@ class NewsRequest extends AbstractApiRequest
             'per_page' => [
                 'sometimes',
                 'numeric',
-            ]
+            ],
+            'categories' => [
+                'array',
+            ],
+            'categories.*' => [
+                'exists:news_categories,id'
+            ],
         ];
     }
 }
