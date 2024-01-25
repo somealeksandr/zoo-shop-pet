@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->json('title')->default('{}');
-            $table->json('content')->default('{}');
-            $table->json('image')->default('{}');
+            $table->json('title');
+            $table->json('content');
+            $table->json('image');
             $table->string('slug');
             $table->unsignedBigInteger('reading_time_minutes')->default(1);
             $table->unsignedBigInteger('category_id')->index();

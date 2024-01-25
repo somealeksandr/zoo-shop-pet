@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('news_categories', function (Blueprint $table) {
             $table->id();
-            $table->json('title')->default('{}');
-            $table->json('description')->default('{}');
+            $table->json('title');
+            $table->json('description');
             $table->timestamps();
         });
     }

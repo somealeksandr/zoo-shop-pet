@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->json('title')->default('{}');
+            $table->json('title');
             $table->string('slug')->unique();
             $table->string('code')->unique();
             $table->timestamps();

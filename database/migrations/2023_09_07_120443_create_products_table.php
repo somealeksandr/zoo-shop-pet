@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->json('title')->default('{}');
-            $table->json('description')->default('{}');
-            $table->json('image')->default('{}');
+            $table->json('title');
+            $table->json('description');
+            $table->json('image');
             $table->string('slug');
             $table->unsignedFloat('price');
             $table->unsignedFloat('promotional_price')->nullable();

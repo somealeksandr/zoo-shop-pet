@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('subcategory_animals', function (Blueprint $table) {
             $table->id();
-            $table->json('title')->default('{}');
-            $table->json('description')->default('{}');
+            $table->json('title');
+            $table->json('description');
             $table->string('slug');
             $table->unsignedBigInteger('category_animal_id')->index();
 

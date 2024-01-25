@@ -1,46 +1,32 @@
 version: "3.7"
 services:
-    app:
+    php:
         build:
-            args:
-                user: some
-                uid: 1000
-            context: ./
-            dockerfile: Dockerfile
-        image: zoo-shop
-        container_name: zoo-shop-app
-        restart: unless-stopped
-        working_dir: /var/www/
+            dockerfile: docker/php/Dockerfile
         volumes:
             - ./:/var/www
-        networks:
-            - zoo-shop
 
-    db:
-        image: postgres:13
-        container_name: zoo-shop-db
-        restart: unless-stopped
+    mysql:
+        image: mysql:8
+        ports:
+            - 3306:3306
         environment:
-            POSTGRES_DB: ${DB_DATABASE}
-            POSTGRES_USER: ${DB_USERNAME}
-            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            - MYSQL_ROOT_PASSWORD=root
         volumes:
-            - ./docker-compose/postgresql:/docker-entrypoint-initdb.d
-        networks:
-            - zoo-shop
+            - ./docker/volume/mysql:/var/lib/mysql
 
     nginx:
-        image: nginx:alpine
-        container_name: zoo-shop-nginx
-        restart: unless-stopped
+        image: nginx:latest
         ports:
-            - 8000:80
+            - 80:80
         volumes:
-            - ./:/var/www
-            - ./docker-compose/nginx:/etc/nginx/conf.d/
-        networks:
-            - zoo-shop
+            - './:/var/www'
+            - './docker/nginx/conf.d:/etc/nginx/conf.d'
 
-networks:
-    zoo-shop:
-        driver: bridge
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - 9090:80
+        environment:
+            - PMA_HOST=mysql
+            - PMA_PORT=3306

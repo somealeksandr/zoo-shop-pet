@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('category_animals', function (Blueprint $table) {
             $table->id();
-            $table->json('title')->default('{}');
-            $table->json('description')->default('{}');
-            $table->json('icon')->default('{}');
+            $table->json('title');
+            $table->json('description');
+            $table->json('icon');
             $table->string('slug');
             $table->timestamps();
         });
