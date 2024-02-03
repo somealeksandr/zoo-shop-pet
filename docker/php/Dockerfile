@@ -14,6 +14,6 @@ RUN pecl install xdebug-3.2.0 && docker-php-ext-enable xdebug
 COPY docker/php/conf.d/* $PHP_INI_DIR/conf.d
 
 # Get latest Composer
-#COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 CMD ["php-fpm"]

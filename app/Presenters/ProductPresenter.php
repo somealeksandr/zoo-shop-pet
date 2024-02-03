@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 
+use App\Models\GeneralSetting;
 use Carbon\Carbon;
 use SomePackage\Presenter\AbstractPresenter;
 
@@ -53,7 +54,8 @@ class ProductPresenter extends AbstractPresenter
 
     public function getIsNewPresent(): ?bool
     {
-        return $this->created_at >= Carbon::now()->subDays(7)->toDateTimeString();
+        $days = GeneralSetting::first()->days_product_is_new;
+        return $this->created_at >= Carbon::now()->subDays($days)->toDateTimeString();
     }
 
     private function getRelationPresent($relation): ?array

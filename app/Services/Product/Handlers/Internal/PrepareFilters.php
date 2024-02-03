@@ -2,6 +2,7 @@
 
 namespace App\Services\Product\Handlers\Internal;
 
+use App\Models\GeneralSetting;
 use App\Models\Subcategory;
 use App\Services\CaseHandler;
 use Carbon\Carbon;
@@ -45,7 +46,8 @@ class PrepareFilters implements CaseHandler
         }
 
         if ($dto->new) {
-            $productsQuery->where('products.created_at', '>=', Carbon::now()->subDays(7)->toDateTimeString());
+            $days = GeneralSetting::first()->days_product_is_new;
+            $productsQuery->where('products.created_at', '>=', Carbon::now()->subDays($days)->toDateTimeString());
         }
 
         return $productsQuery;

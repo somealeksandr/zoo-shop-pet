@@ -29,7 +29,7 @@
 
             <li>
                 <a href="{{ admin_url('countries') }}">
-                    <i class="fa fa-lg fa-fw fa-user"></i>
+                    <i class="fa fa-lg fa-fw fa-globe"></i>
                     <span class="menu-item-parent">Countries</span>
                 </a>
             </li>
@@ -83,6 +83,13 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+
+            <li>
+                <a href="{{ admin_url('general-settings') }}">
+                    <i class="fa fa-lg fa-fw fa-cog"></i>
+                    <span class="menu-item-parent">General Settings</span>
+                </a>
             </li>
         </ul>
     </nav>
