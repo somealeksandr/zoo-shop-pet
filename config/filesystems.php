@@ -72,6 +72,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'offer-by-animals' => [
+            'driver' => 'local',
+            'root' => public_path('media/offer-by-animals'),
+            'url' => env('APP_URL').'/media/offer-by-animals',
+            'visibility' => 'public',
+        ],
+
         'countries' => [
             'driver' => 'local',
             'root' => public_path('media/countries'),
