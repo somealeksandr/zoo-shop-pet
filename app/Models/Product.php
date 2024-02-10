@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Presenters\ProductPresenter;
+use App\Traits\FullTextSearchTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,7 +17,7 @@ use Spatie\Translatable\HasTranslations;
 
 class Product extends Model
 {
-    use HasFactory, HasTranslations, HasSlug, PresenterTrait;
+    use HasFactory, HasTranslations, HasSlug, PresenterTrait, FullTextSearchTrait;
 
     protected $table = 'products';
 
@@ -41,6 +42,11 @@ class Product extends Model
         'title',
         'short_description',
         'description',
+    ];
+
+    protected $searchable = [
+        'title',
+        'description'
     ];
 
     protected $casts = [
