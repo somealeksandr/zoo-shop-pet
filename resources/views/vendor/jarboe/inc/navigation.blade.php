@@ -42,10 +42,19 @@
             </li>
 
             <li>
-                <a href="{{ admin_url('animals') }}">
-                    <i class="fa fa-lg fa-fw fa-user"></i>
-                    <span class="menu-item-parent">Animals</span>
-                </a>
+                <a href="#" title="Admin Panel"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Animals</span></a>
+                <ul>
+                    <li>
+                        <a href="{{ admin_url('offer-by-animals') }}">
+                            <span class="menu-item-parent">Offers by Animal</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ admin_url('animals') }}">
+                            <span class="menu-item-parent">Animals</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li>

@@ -6,6 +6,7 @@ use App\DTO\Product\FiltersDTO;
 use App\Http\Controllers\AbstractApiController;
 use App\Http\Requests\Product\FiltersProductRequest;
 use App\Models\Animal;
+use App\Models\OfferByAnimal;
 use App\Services\Animal\AnimalService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
@@ -32,5 +33,10 @@ class AnimalController extends AbstractApiController
         $products = $this->service->products(FiltersDTO::fromArray($request->validated()), $animal);
 
         return $this->success($products, 'Products list by animal');
+    }
+
+    public function offerByAnimals(): Collection
+    {
+        return OfferByAnimal::all();
     }
 }
