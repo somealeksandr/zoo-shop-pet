@@ -2,7 +2,7 @@
 
 namespace App\Services\Product;
 
-use App\DTO\Profile\FiltersDTO;
+use App\DTO\Product\FiltersDTO;
 use App\Models\Product;
 use App\Services\Product\Handlers\Filters;
 use App\Services\Product\Handlers\Products;

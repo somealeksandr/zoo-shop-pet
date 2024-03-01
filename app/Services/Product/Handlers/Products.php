@@ -2,7 +2,7 @@
 
 namespace App\Services\Product\Handlers;
 
-use App\DTO\Profile\FiltersDTO;
+use App\DTO\Product\FiltersDTO;
 use App\Models\Product;
 use App\Services\CaseHandler;
 use App\Services\Product\Handlers\Internal\PrepareFilters;

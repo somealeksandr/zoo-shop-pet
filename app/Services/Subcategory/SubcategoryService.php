@@ -2,7 +2,7 @@
 
 namespace App\Services\Subcategory;
 
-use App\DTO\Profile\FiltersDTO;
+use App\DTO\Product\FiltersDTO;
 use App\Models\Subcategory;
 use App\Services\Subcategory\Handlers\Products;
 

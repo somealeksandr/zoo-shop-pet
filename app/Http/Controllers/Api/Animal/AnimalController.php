@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api\Animal;
 
+use App\DTO\Product\FiltersDTO;
 use App\Http\Controllers\AbstractApiController;
+use App\Http\Requests\Product\FiltersProductRequest;
 use App\Models\Animal;
 use App\Services\Animal\AnimalService;
 use Illuminate\Http\JsonResponse;
@@ -10,7 +12,7 @@ use Illuminate\Support\Collection;
 
 class AnimalController extends AbstractApiController
 {
-    public function __construct(private AnimalService $service)
+    public function __construct(private readonly AnimalService $service)
     {
         return Animal::all();
     }
@@ -25,8 +27,10 @@ class AnimalController extends AbstractApiController
         return $animal->categories;
     }
 
-    public function products(Animal $animal): JsonResponse
+    public function products(FiltersProductRequest $request, Animal $animal): JsonResponse
     {
-        return $this->success($animal->products, 'Products list by animal');
+        $products = $this->service->products(FiltersDTO::fromArray($request->validated()), $animal);
+
+        return $this->success($products, 'Products list by animal');
     }
 }

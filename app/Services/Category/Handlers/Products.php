@@ -2,7 +2,7 @@
 
 namespace App\Services\Category\Handlers;
 
-use App\DTO\Profile\FiltersDTO;
+use App\DTO\Product\FiltersDTO;
 use App\Models\Category;
 use App\Services\CaseHandler;
 use App\Services\Product\Handlers\Internal\PrepareFilters;
@@ -10,7 +10,7 @@ use App\Services\Product\Handlers\Internal\Sort;
 
 class Products implements CaseHandler
 {
-    public function __construct(private FiltersDTO $filtersDTO, private Category $category)
+    public function __construct(private readonly FiltersDTO $filtersDTO, private readonly Category $category)
     {
     }
 

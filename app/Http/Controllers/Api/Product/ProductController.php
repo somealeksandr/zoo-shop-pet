@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Product;
 
-use App\DTO\Profile\FiltersDTO;
+use App\DTO\Product\FiltersDTO;
 use App\Http\Controllers\AbstractApiController;
 use App\Http\Requests\Product\FiltersProductRequest;
 use App\Models\Product;
