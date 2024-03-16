@@ -80,6 +80,7 @@ Route::group(['prefix' => 'subcategories'], function () {
 
 Route::group(['prefix' => 'products'], function () {
     Route::get('/', [ProductController::class, 'index']);
+    Route::get('/search', [ProductController::class, 'search']);
     Route::get('/{product}', [ProductController::class, 'getProduct']);
     Route::post('/{product}/favorite', [ProductController::class, 'toggleFavorite'])->middleware('auth.jwt');
 });
