@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Product;
 
 use App\Http\Requests\Api\AbstractApiRequest;
+use Illuminate\Validation\Rule;
 
 class SearchProductRequest extends AbstractApiRequest
 {
@@ -12,6 +13,9 @@ class SearchProductRequest extends AbstractApiRequest
             'search' => [
                 'min:1'
             ],
+            'lang' => [
+                Rule::in(['ua', 'en'])
+            ]
         ];
     }
 }
