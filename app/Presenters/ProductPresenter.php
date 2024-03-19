@@ -61,6 +61,7 @@ class ProductPresenter extends AbstractPresenter
     private function getRelationPresent($relation): ?array
     {
         return [
+            'id' => $relation?->first()?->title ?? null,
             'title' => $relation?->first()?->title,
             'slug' => $relation?->first()?->slug,
         ];
