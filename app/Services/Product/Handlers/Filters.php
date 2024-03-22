@@ -57,6 +57,8 @@ class Filters implements CaseHandler
         $prices = [$min->price ?? 0, $max->price ?? 0];
 
         return [
+            'category' => $category->title,
+            'animal' => $category->animal->title,
             'subcategories' => $subcategories,
             'brands' => $brands,
             'countries' => $countries,
